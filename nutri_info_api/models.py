@@ -1,9 +1,10 @@
 from enum import Enum
+from nutri_info_api.service import NutritionCalculator
 
 class WeightGoal(str, Enum):
-    GAIN = "Gain_Weight"
-    MAINTAIN = "Maintain_Body_Weight"
-    LOSE = "Lose_Weight"  
+    GAIN = "gain_weight"
+    MAINTAIN = "maintain_body_weight"
+    LOSE = "lose_weight"  
 
 class IdealWeightReport():
     min_weight: float
@@ -24,15 +25,14 @@ class NutritionalReport():
     water_requirement: int
     calorie_intake_requirement: int
 
-    def __init__(self, name, weight, height, imc, imc_diagnosis, ideal_weight_range, water_requirement, calorie_intake_requirement) -> None:
+    def __init__(self,
+                 name: str,
+                 weight: float,
+                 height: float,
+                 goal: WeightGoal) -> None:
         self.name = name
         self.weight = weight
         self.height = height
-        self.goal = 
+        self.goal = goal.name
+        self.imc = NutritionCalculator.calculate_imc(weight, height)
 
-
-    def calculate_imc(self,
-                      weight: float,
-                      height: float) -> float:
-    
-    def calculate

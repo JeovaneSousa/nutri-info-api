@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Path, Query
 from typing import Annotated
-from models import WeightGoal
+from nutri_info_api.models import WeightGoal
 
 app = FastAPI()  
     
