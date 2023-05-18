@@ -35,8 +35,8 @@ class NutritionCalculator:
         return round(35 * weight)
     
     @staticmethod
-    def calculate_calorie_requirement(weight:float, goal:WeightGoal) -> int:
-        print(goal)
+    def calculate_calorie_requirement(weight:float,
+                                      goal:WeightGoal) -> int:
         if weight <= 0 or weight > 200:
             return None
         if goal.name == WeightGoal.weight_loss.name:
