@@ -30,6 +30,9 @@ How to run on Windows:
         pip install -r requirements.txt
         uvicorn nutri_info_api.main:app --reload
 
+How to run Unit Tests:
+
+        pytest
 
 You can try it out at: [Swagger Documentation Link](http://127.0.0.1:8000/docs)
 
