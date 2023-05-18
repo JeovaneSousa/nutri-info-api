@@ -1,0 +1,2 @@
+from nutri_info_api.models import IdealWeightReport
+from nutri_info_api.models import WeightGoal, NutritionalReport
