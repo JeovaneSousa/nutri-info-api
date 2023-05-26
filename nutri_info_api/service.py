@@ -1,8 +1,8 @@
-from nutri_info_api.models import IdealWeightReport, WeightGoal
+from nutri_info_api.models import IdealWeightReport, WeightGoal, NutritionalReport
 class NutritionCalculator:
 
     @staticmethod
-    def calculate_imc(weight: float,
+    def calculate_bmi(weight: float,
                       height: float) -> float:
         if weight <= 0 or weight >= 300 or height <= 0   or height >= 2.5:
             return None
@@ -10,10 +10,10 @@ class NutritionCalculator:
         return round(weight/(height**2),ndigits=2)
     
     @staticmethod
-    def diagnose_imc(imc:float) -> str:
-        if imc < 18.5: return 'Underweight'
-        elif imc < 25: return 'Eutrophy'
-        elif imc < 30: return "Overweight"
+    def diagnose_bmi(bmi:float) -> str:
+        if bmi < 18.5: return 'Underweight'
+        elif bmi < 25: return 'Eutrophy'
+        elif bmi < 30: return "Overweight"
         else: return "Obesety" 
     
     @staticmethod
@@ -45,3 +45,12 @@ class NutritionCalculator:
             return round(27 * weight)
         else: 
             return round(33 * weight)
+        
+class ApiService:
+    def complete_report(self,report: NutritionalReport) -> NutritionalReport:
+            report.bmi = NutritionCalculator.calculate_bmi(report.weight,report.height)
+            report.bmi_diagnosis = NutritionCalculator.diagnose_bmi(report.bmi)
+            report.ideal_weight_range = NutritionCalculator.calculate_ideal_weight_range(report.height)
+            report.water_requirement = NutritionCalculator.calculate_water_requirement(report.weight)
+            report.calorie_intake_requirement = NutritionCalculator.calculate_calorie_requirement(report.weight, report.goal)
+            return report
