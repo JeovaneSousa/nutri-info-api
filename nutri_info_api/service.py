@@ -53,4 +53,5 @@ class ApiService:
             report.ideal_weight_range = NutritionCalculator.calculate_ideal_weight_range(report.height)
             report.water_requirement = NutritionCalculator.calculate_water_requirement(report.weight)
             report.calorie_intake_requirement = NutritionCalculator.calculate_calorie_requirement(report.weight, report.goal)
+            
             return report

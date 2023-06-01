@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Path, Query
 from typing import Annotated
 from nutri_info_api.models import WeightGoal, NutritionalReport
-from nutri_info_api.service import NutritionCalculator,ApiService
+from nutri_info_api.service import ApiService
 
 app = FastAPI()  
 api_service = ApiService()

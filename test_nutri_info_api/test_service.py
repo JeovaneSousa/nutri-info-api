@@ -6,18 +6,18 @@ class TestNutritionCalculator:
     
     #IMC tests
     def test_calculate_imc_with_valid_values(self):
-        assert NutritionCalculator.calculate_imc(85, 1.75) == 27.76
+        assert NutritionCalculator.calculate_bmi(85, 1.75) == 27.76
 
     def test_calculate_imc_with_off_range_values(self):
-        assert NutritionCalculator.calculate_imc(0,1.75) is None
-        assert NutritionCalculator.calculate_imc(301,1.75) is None
-        assert NutritionCalculator.calculate_imc(75, 0) is None
-        assert NutritionCalculator.calculate_imc(85, 3) is None
+        assert NutritionCalculator.calculate_bmi(0,1.75) is None
+        assert NutritionCalculator.calculate_bmi(301,1.75) is None
+        assert NutritionCalculator.calculate_bmi(75, 0) is None
+        assert NutritionCalculator.calculate_bmi(85, 3) is None
 
     def test_calculate_imc_lenght_after_comma(self):
         after_comma = ""
 
-        result:float = NutritionCalculator.calculate_imc(85, 1.75)
+        result:float = NutritionCalculator.calculate_bmi(85, 1.75)
 
         result:list[str] = str(result).split(sep='.')
 
